@@ -1,6 +1,61 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
+
+    <record id="test_module_tree" model="ir.ui.view">
+            <field name="name">test.module.tree</field>
+            <field name="model">test.module</field>
+            <field name="arch" type="xml">
+                <tree string="Test Module">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="test_module_form" model="ir.ui.view">
+            <field name="name">test.module.form</field>
+            <field name="model">test.module</field>
+            <field name="arch" type="xml">
+                <form string="Test Module Form">
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_test_module" model="ir.actions.act_window">
+            <field name="name">Test Module</field>
+            <field name="res_model">test.module</field>
+            <field name="view_mode">tree,form</field>
+<!--            <field name="search_view_id" ref="view_account_type_search"/>-->
+            <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Define a new account type
+              </p>
+            </field>
+        </record>
+
+
+    <!-- Top menu item -->
+
+    <menuitem name="Test" id="test_module.menu_root"/>
+
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="test_module.menu_1" parent="test_module.menu_root"/>
+    <menuitem name="Menu 2" id="test_module.menu_2" parent="test_module.menu_root"/>
+-->
+    <!-- actions -->
+
+    <menuitem name="Testing" id="test_module.mysubmenu" parent="test_module.menu_root"
+              action="test_module.action_test_module"/>
+<!--    <menuitem name="Server to list" id="test_module" parent="test_module.menu_2"-->
+<!--              action="test_module.action_server"/>-->
 <!--
     <record model="ir.ui.view" id="test_module.list">
       <field name="name">test_module list</field>
